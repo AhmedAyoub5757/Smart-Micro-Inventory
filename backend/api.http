@@ -24,3 +24,7 @@ Content-Type: application/json
 
 ### Delete Product
 DELETE http://localhost:5000/api/products/68d1167c486c192ddeecbbf5
+
+
+### Get non-existent product
+GET http://localhost:5000/api/products/6520f1e0f2abcd1234567890
