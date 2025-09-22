@@ -1,0 +1,26 @@
+### Create Product
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "Test Products New",
+  "price": 150,
+  "quantity": 30,
+  "category": "Electronics"
+}
+
+
+### Update Product
+PUT http://localhost:5000/api/products/68d0e5e0018411576dccf099
+Content-Type: application/json
+
+{
+  "name": "Premium Updated Product",
+  "price": 499,
+  "quantity": 25,
+  "category": "Special Edition"
+}
+
+
+### Delete Product
+DELETE http://localhost:5000/api/products/68d1167c486c192ddeecbbf5

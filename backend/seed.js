@@ -9,9 +9,9 @@ console.log("Loaded URI:", process.env.URI); // 👈 debug log
 
 
 const products = [
-  { name: "Product A", price: 100, quantity: 10, category: "Electronics" },
-  { name: "Product B", price: 50, quantity: 20, category: "Groceries" },
-  { name: "Product C", price: 200, quantity: 5, category: "Clothing" },
+  { name: "Product AA", price: 100, quantity: 10, category: "Electronics" },
+  { name: "Product BB", price: 50, quantity: 20, category: "Groceries" },
+  { name: "Product CC", price: 200, quantity: 5, category: "Clothing" },
 ];
 
 const seedProducts = async () => {
@@ -19,8 +19,8 @@ const seedProducts = async () => {
     await connectDB();
 
     // optional: clear old data first
-    await Product.deleteMany();
-    console.log("Old products removed");
+    // await Product.deleteMany();
+    // console.log("Old products removed");
     
     await Product.insertMany(products);
     console.log("seeding successful");
