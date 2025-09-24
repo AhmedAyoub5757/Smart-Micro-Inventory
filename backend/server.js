@@ -7,6 +7,8 @@ import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs";
 import path from "path";
 import { fileURLToPath } from "url";
+import cors from "cors";
+
 
 dotenv.config();
 
@@ -14,6 +16,13 @@ connectDB();
 
 
 const app = express();
+
+// ✅ Allow requests from frontend
+app.use(cors({
+  origin: "http://localhost:5173", // your frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
 
 // Needed because __dirname is not available in ES6
 const __filename = fileURLToPath(import.meta.url);
