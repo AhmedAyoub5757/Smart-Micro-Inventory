@@ -8,6 +8,7 @@ import YAML from "yamljs";
 import path from "path";
 import { fileURLToPath } from "url";
 import cors from "cors";
+import authRoutes from "./routes/authRoutes.js";
 
 
 dotenv.config();
@@ -38,6 +39,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 app.use('/api/products', productRoutes);
+app.use("/api/auth", authRoutes)
 
 
 
