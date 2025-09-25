@@ -1,0 +1,32 @@
+### Register a new user
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Admin User",
+  "email": "admin@example.com",
+  "password": "password123",
+  "role": "admin"
+}
+
+### Login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "password123"
+}
+
+### Access protected route (create product)
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "Laptop",
+  "price": 1200,
+  "description": "Powerful machine"
+}
+
+### Logout
+POST http://localhost:5000/api/auth/logout
