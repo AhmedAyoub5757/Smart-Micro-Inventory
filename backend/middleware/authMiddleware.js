@@ -20,7 +20,7 @@ export const isAuthenticated = async (req, res, next) => {
         next();
     } catch (error) {
         res.status(401).json({message: "Invalid or expired token"});
-    }
+    } 
 };
 
 export const authorizeRoles = (...roles) => {
