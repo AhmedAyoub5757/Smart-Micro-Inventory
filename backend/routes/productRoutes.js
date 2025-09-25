@@ -11,12 +11,14 @@ import { isAuthenticated, authorizeRoles } from "../middleware/authMiddleware.js
 const router = express.Router();
 
 // Public
-router.get("/", getProducts);
-router.get("/:id", getProductById);
+router.get("/", isAuthenticated, getProducts);
+router.get("/:id", isAuthenticated, getProductById);
 
 // Protected
-router.post("/", isAuthenticated, authorizeRoles("admin", "editor"), createProduct);
-router.put("/:id", isAuthenticated, authorizeRoles("admin", "editor"), updateProduct);
+router.post("/", isAuthenticated, authorizeRoles("admin"), createProduct);
+
+router.put("/:id", isAuthenticated, authorizeRoles("admin", "staff"), updateProduct);
+
 router.delete("/:id", isAuthenticated, authorizeRoles("admin"), deleteProduct);
 
 export default router;

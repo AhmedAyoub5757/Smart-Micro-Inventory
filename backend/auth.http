@@ -1,32 +1,85 @@
-### Register a new user
+### REGISTER USERS
+
 POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-  "name": "Admin User",
-  "email": "admin@example.com",
-  "password": "password123",
+  "username": "AliceRoot",
+  "password": "AlicePass123",
   "role": "admin"
 }
 
-### Login
+###
+
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "BobWorker",
+  "password": "BobPass123",
+  "role": "staff"
+}
+
+###
+
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "CharlieViewer",
+  "password": "CharliePass123",
+  "role": "user"
+}
+
+
+### LOGIN USERS
+
 POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "admin@example.com",
-  "password": "password123"
+  "username": "AliceRoot",
+  "password": "AlicePass123"
 }
 
-### Access protected route (create product)
-POST http://localhost:5000/api/products
+###
+
+POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "name": "Laptop",
-  "price": 1200,
-  "description": "Powerful machine"
+  "username": "BobWorker",
+  "password": "BobPass123"
 }
 
-### Logout
-POST http://localhost:5000/api/auth/logout
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "CharlieViewer",
+  "password": "CharliePass123"
+}
+
+
+### PROTECTED ROUTES TESTING
+
+
+# ---- Admin Token ----
+# Should PASS /admin, /editor, /viewer
+
+GET http://localhost:5000/api/protected/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDUxYTA2YzI4YTAxYWMxZmRiYmQyZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1ODc5NjQ0MywiZXhwIjoxNzU4ODgyODQzfQ.SVVIBdh-4quj1fqs7elWJ-uJ0FS5ecJEn9UN0BqRHDE
+
+###
+
+GET http://localhost:5000/api/protected/editor
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDUxYTA2YzI4YTAxYWMxZmRiYmQyZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1ODc5NjQ0MywiZXhwIjoxNzU4ODgyODQzfQ.SVVIBdh-4quj1fqs7elWJ-uJ0FS5ecJEn9UN0BqRHDE
+
+###
+
+GET http://localhost:5000/api/protected/viewer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDUxYTA2YzI4YTAxYWMxZmRiYmQyZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1ODc5NjQ0MywiZXhwIjoxNzU4ODgyODQzfQ.SVVIBdh-4quj1fqs7elWJ-uJ0FS5ecJEn9UN0BqRHDE
+
+

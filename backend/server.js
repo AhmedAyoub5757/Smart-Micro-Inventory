@@ -9,6 +9,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
+import protectedRoutes from "./routes/protectedRoutes.js";
+
 
 
 dotenv.config();
@@ -33,14 +35,17 @@ const __dirname = path.dirname(__filename);
 const swaggerDocument = YAML.load(path.join(__dirname, "./docs/swagger.yaml"));
 
 app.use(express.json());
-app.use(errorHandler);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 
 app.use('/api/products', productRoutes);
 app.use("/api/auth", authRoutes)
+app.use("/api/protected", protectedRoutes);
 
+
+// Error handler should come last
+app.use(errorHandler);
 
 
 
